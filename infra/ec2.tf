@@ -32,7 +32,11 @@ resource "aws_instance" "poc-instance" {
       "sudo systemctl start jenkins",
       "sudo apt install -y docker.io",
       "sudo usermod -aG docker ubuntu",
-      "sudo usermod -aG docker jenkins"
+      "sudo usermod -aG docker jenkins",
+      # Install AWS CLI v1
+      "curl \"https://s3.amazonaws.com/aws-cli/awscli-bundle.zip\" -o \"awscli-bundle.zip\"",
+      "unzip awscli-bundle.zip",
+      "sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws"
     ]
   }
 }
